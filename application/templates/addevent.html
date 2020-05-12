@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block body_content %}
+    <div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            {{ form.season.label }}
+            {{ form.season }}
+	    {% if form.season.errors %}
+	        <div class='error'>
+			{% for error in form.season.errors %}
+			    <span>{{ error }}</span>
+			{% endfor %}
+	        </div>
+	    {% endif %}
+	    <br>
+	    {{ form.episode.label }}
+            {{ form.episode }}
+	    {% if form.episode.errors %}
+	        <div class='error'>
+			{% for error in form.episode.errors %}
+			    <span>{{ error }}</span>
+			{% endfor %}
+		</div>
+	    {% endif %}
+	    <br>
+	    {{ form.character.label }}
+            {{ form.character }}
+	    {% if form.character.errors %}
+                <div class='error'>
+                        {% for error in form.character.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                </div>
+	    {% endif %}
+            <br>
+            {{ form.from_year.label }}
+            {{ form.from_year }}
+	    {% if form.from_year.errors %}
+	        <div class='error'>
+			{% for error in form.from_year.errors %}
+			    <span>{{ error }}</span>
+			{% endfor %}
+		</div>
+	    {% endif %}
+            <br>
+            {{ form.to_year.label }}
+            {{ form.to_year }}
+	    {% if form.to_year.errors %}
+	        <div class='error'>
+			{% for error in form.to_year.errors %}
+			    <span>{{ error }}</span>
+			{% endfor %}
+		</div>
+	    {% endif %}
+            <br>
+            {{ form.event.label }}
+            {{ form.event }}
+	    {% if form.event.errors %}
+	        <div class='error'>
+			{% for error in form.event.errors %}
+			    <span>{{ error }}</span>
+			{% endfor %}
+		</div>
+	    {% endif %}
+            <br>
+            {{ form.submit }}
+        </form>
+    </div>
+{% endblock %}

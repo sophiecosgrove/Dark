@@ -1,0 +1,16 @@
+
+
+{% extends 'layout.html' %}
+{% block body_content %}
+                <h1>{{ title }}</h1>
+
+		{% for event in events %}
+		    <div>
+			    <p>Character: {{ event.character }}</p>
+			    <p>Travelled from: {{ event.from_year }}</p>
+			    <p>To: {{ event.to_year }}</p>
+			    <p>Event: {{event.event }}</p>
+                    </div>
+		{% endfor %}
+{% endblock %}
+~                       
