@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired, Length, ValidationError
+from application.models import Events
 
 class EventForm(FlaskForm):
     season = IntegerField('Season',
@@ -36,3 +37,9 @@ class EventForm(FlaskForm):
             ]
         )
     submit = SubmitField('Add Event!')
+
+    def validate_event(self, event):
+        event = Events.query.filter_by(event=event.data).first()
+
+        if event:
+            raise ValidationError('Event already logged')
