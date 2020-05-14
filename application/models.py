@@ -8,7 +8,7 @@ class Events(db.Model):
     from_year = db.Column(db.Integer, nullable=False)
     to_year = db.Column(db.Integer, nullable=False)
     event = db.Column(db.String(100), nullable=False)
-    character_id = db.Column(db.Integer, db.ForeignKey('characters.id'), nullable=False)
+    character_id = db.Column(db.Integer, db.ForeignKey('characters.id'), nullable=True)
 
 
     def __repr__(self):

@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from application import app, db
 from application.models import Events, Characters
 from application.forms import EventForm, CharacterForm
@@ -14,7 +14,7 @@ def home():
 @app.route('/characters')
 def characters():
     characterData = Characters.query.all()
-    return render_template('characters.html', title='Character Page')
+    return render_template('characters.html', title='Character Page', characters=characterData)
 
 @app.route('/years')
 def years():
@@ -39,7 +39,7 @@ def addevent():
         )
         db.session.add(eventData)
         db.session.commit()
-        
+        flash('Your event has been added!')
         return redirect(url_for('eventlog'))
     else:
         print(form.errors)
@@ -60,7 +60,7 @@ def addcharacter():
                 )
         db.session.add(characterData)
         db.session.commit()
-        
+        flash('Your character has been added!')
         return redirect(url_for('characters'))
     else:
         print(form.errors)

@@ -72,9 +72,9 @@ class CharacterForm(FlaskForm):
             )
     submit = SubmitField('Add Character')
 
-    def validate_character(self, character):
-        character = Characters.query.filter_by(character=name.data).first()
+    def validate_character(self, name):
+        character = Characters.query.filter_by(name=name.data).first()
 
-        if event:
+        if character:
             raise ValidationError('Character already logged')
 
