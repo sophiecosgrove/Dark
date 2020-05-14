@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for
 from application import app, db
-from application.models import Events
-from application.forms import EventForm
+from application.models import Events, Characters
+from application.forms import EventForm, CharacterForm
 
 
 
@@ -13,6 +13,7 @@ def home():
 
 @app.route('/characters')
 def characters():
+    characterData = Characters.query.all()
     return render_template('characters.html', title='Character Page')
 
 @app.route('/years')
@@ -43,6 +44,25 @@ def addevent():
     else:
         print(form.errors)
 
-    return render_template('addevent.html', title='Add An Event', form=form)
+    return render_template('addevent.html', title='Add an Event', form=form)
 
+@app.route('/addcharacter', methods=['GET','POST'])
+def addcharacter():
+    form = CharacterForm()
+    if form.validate_on_submit():
+        characterData = Characters(
+                name = form.name.data,
+                mother = form.mother.data,
+                father = form.father.data,
+                hair_colour = form.hair_colour.data,
+                eye_colour = form.eye_colour.data,
+                status = form.status.data
+                )
+        db.session.add(characterData)
+        db.session.commit()
+        
+        return redirect(url_for('characters'))
+    else:
+        print(form.errors)
 
+    return render_template('addcharacter.html', title='Add a Character', form=form)

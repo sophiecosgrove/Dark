@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<h3>Enter a new character here:</h3>
+
+    <div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}
+            {{ form.name }}
+            {% if form.name.errors %}
+                <div class='error'>
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                </div>
+            {% endif %}
+            <br>
+            {{ form.mother.label }}
+            {{ form.mother }}
+            {% if form.mother.errors %}
+                <div class='error'>
+                        {% for error in form.mother.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                </div>
+            {% endif %}
+            <br>
+            {{ form.father.label }}
+            {{ form.father }}
+            {% if form.father.errors %}
+                <div class='error'>
+                        {% for error in form.father.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                </div>
+
+            {% endif %}
+            <br>
+            {{ form.hair_colour.label }}
+            {{ form.hair_colour }}
+            {% if form.hair_colour.errors %}
+                <div class='error'>
+                        {% for error in form.hair_colour.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                </div>
+            {% endif %}
+            <br>
+            {{ form.eye_colour.label }}
+            {{ form.eye_colour }}
+            {% if form.eye_colour.errors %}
+                <div class='error'>
+                        {% for error in form.eye_colour.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                </div>
+            {% endif %}
+            <br>
+            {{ form.status.label }}
+            {{ form.status }}
+            {% if form.status.errors %}
+                <div class='error'>
+                        {% for error in form.status.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                </div>
+            {% endif %}
+            <br>
+            {{ form.submit }}
+        </form>
+    </div>
+{% endblock %}
+

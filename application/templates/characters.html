@@ -2,5 +2,17 @@
 {% block body_content %}
                 <h1>{{ title }}</h1>
 
-		<p>Welcome to the characters of Dark!</p>
+                {% for character in characters %}
+                    <div>
+			    <br>
+			    <p>Name: {{ character.name }}</p>
+                            <p>ID: {{ character.id }}</p>
+                            <p>Mother: {{ character.mother }}</p>
+                            <p>Father: {{ character.father }}</p>
+			    <p>Hair Colour: {{ character.hair_colour }}</p>
+			    <p>Eye Colour: {{ character.eye_colour }}</p>
+			    <p>Status: {{ character.status }}</p>
+                    </div>
+                {% endfor %}
 {% endblock %}
+~                 
