@@ -30,6 +30,7 @@ class Characters(db.Model):
     hair_colour = db.Column(db.String(30), nullable=False)
     eye_colour = db.Column(db.String(30), nullable=False)
     status = db.Column(db.String(30), nullable=False)
+    events = db.relationship('Events', backref='character_involved', lazy=True)
     
     def __repr__(self):
         return ''.join([
