@@ -3,16 +3,16 @@
                 <h1>{{ title }}</h1>
 
                 {% for character in characters %}
+		<article class="media content-section">
                     <div>
-			    <br>
-			    <p>Name: {{ character.name }}</p>
-                            <p>ID: {{ character.id }}</p>
+                     <h2><a class="article-title" href="{{ url_for('character', character_id=character.id) }}">{{ character.name }}</a></h2>
                             <p>Mother: {{ character.mother }}</p>
                             <p>Father: {{ character.father }}</p>
 			    <p>Hair Colour: {{ character.hair_colour }}</p>
 			    <p>Eye Colour: {{ character.eye_colour }}</p>
 			    <p>Status: {{ character.status }}</p>
                     </div>
+		</article>
                 {% endfor %}
 {% endblock %}
 ~                 

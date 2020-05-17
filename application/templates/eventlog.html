@@ -5,12 +5,20 @@
                 <h1>{{ title }}</h1>
 
 		{% for event in events %}
-		    <div>
-			    <p>Character: {{ event.character }}</p>
-			    <p>Travelled from: {{ event.from_year }}</p>
-			    <p>To: {{ event.to_year }}</p>
-			    <p>Event: {{event.event }}</p>
-                    </div>
+		<article class="media content-section">
+	          <div class="media-body">
+                     <div class="article-metadata">
+                       <small class="text-muted">Season:{{ event.season }}</small>
+		       <small class="text-muted">Episode:{{ event.episode }}</small>
+                     </div>
+                     <h2><a class="article-title" href="{{ url_for('event', event_id=event.id) }}">{{ event.event }}</a></h2>
+		     <p>Character: {{ event.character }}</p>
+		     <p> Travelled from: {{ event.from_year }}</p>
+		     <p>  To: {{ event.to_year }}</p>
+		     <p> Event: {{event.event }}</p>
+		     
+		</div>
+               </article>
 		{% endfor %}
 {% endblock %}
 ~                       
