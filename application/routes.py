@@ -29,7 +29,9 @@ def eventlog():
 def addevent():
     form = EventForm()
     if form.validate_on_submit():
+        char = Characters.query.filter_by(name=form.character.data).first()
         eventData = Events(
+                character_id = char.id,
                 season = form.season.data,
                 episode = form.episode.data,
                 character = form.character.data,

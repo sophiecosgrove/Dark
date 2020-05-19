@@ -8,7 +8,7 @@ class Events(db.Model):
     from_year = db.Column(db.Integer, nullable=False)
     to_year = db.Column(db.Integer, nullable=False)
     event = db.Column(db.String(100), nullable=False)
-    character_id = db.Column(db.Integer, db.ForeignKey('characters.id'), nullable=True)
+    character_id = db.Column(db.Integer, db.ForeignKey('characters.id'))
 
 
     def __repr__(self):
@@ -30,7 +30,6 @@ class Characters(db.Model):
     hair_colour = db.Column(db.String(30), nullable=False)
     eye_colour = db.Column(db.String(30), nullable=False)
     status = db.Column(db.String(30), nullable=False)
-    events = db.relationship('Events', backref='character_involved', lazy=True)
     
     def __repr__(self):
         return ''.join([
