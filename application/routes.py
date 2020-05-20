@@ -129,9 +129,13 @@ def update_character(character_id):
         form.status.data = character.status
     return render_template('addcharacter.html', title = 'Update Character', form = form)
 
-@app.route("/character/<int:character_id>/delete", methods=['POST'])
+@app.route("/character/<int:character_id>/delete", methods=['GET','POST'])
 def delete_character(character_id):
     character = Characters.query.get_or_404(character_id)
+    events = Events.query.filter_by(character_id=character.id).all()
+    for event in events:
+        db.session.delete(event)
+
     db.session.delete(character)
     db.session.commit()
     flash('Character  has been deleted!', 'success')

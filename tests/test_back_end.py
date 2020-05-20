@@ -118,7 +118,7 @@ class TestPosts(TestBase):
                 data=dict(
                 season=1, 
                 episode=1,
-                character='testcharacter', 
+                character='testname', 
                 from_year=2020,
                 to_year=2000,
                 event='testevent'
@@ -131,7 +131,7 @@ class TestPosts(TestBase):
             self.assertEqual(response.status_code, 405)
         with self.client:
             response = self.client.get(url_for('delete_character', character_id=1))
-            self.assertEqual(response.status_code, 405)
+            self.assertEqual(response.status_code, 302)
 
 class TestModels(TestBase):
     def test_character_validation(self):
@@ -158,30 +158,30 @@ class TestModels(TestBase):
 class TestForms(TestBase):
     def test_repeat(self):
         response = self.client.post(
-            '/addevent',
+            '/addcharacter',
             data=dict(
-            season=1, 
-            episode=1,
-            character='test', 
-            from_year=2020,
-            to_year=2020,
-            event='testevent'
+            name='testuser', 
+            mother='testmother',
+            father='testfather', 
+            hair_colour='testhair',
+            eye_colour='testeye',
+            status='teststatus'
             ),
             follow_redirects=True
             )
         response = self.client.post(
-            '/addevent',
+            '/addcharacter',
             data=dict(
-            season=1, 
-            episode=1,
-            character='test', 
-            from_year=2020,
-            to_year=2020,
-            event='testevent'
+            name='testuser', 
+            mother='testmother',
+            father='testfather', 
+            hair_colour='testhair',
+            eye_colour='testeye',
+            status='teststatus'
             ),
             follow_redirects=True
             )
-        self.assertIn(b'Event already logged', response.data)
+        self.assertIn(b'Character already logged', response.data)
 
         
 
