@@ -29,7 +29,7 @@ final design, why, how it changed
 system level design - CI pipeline
 
 Testing
-reports and tool implementation
+On my first initial implementation of pytest and with inputting a few basic get requests to display websites and one post function, the coverate was 44%, with the main problem being the routes page which was at 27%. After completing the get requests for all pages of the website and adding another post function for the characters database, the coverage went up to 67% overall and 55% for the routes.py. After sucessfully adding the update and delete functions for both the characters and events to the test code, the coverage went up to 89%. The next step was to print the __repr__ functions in the models.py file, which brought the models.py coverage from 91% to 100%. After deleting a custom validator from the events form, which wasn't working due to their already being a working one above which was causing the code to skip over this function, the forms.py coverage went up from 91% to 100%. I also had an app.py file which was falsely repeated in the applications folder as well as being in the root of the project, so I removed this which improved the overall score to 94%.
 
 Risk assesment
 initial - discuss
