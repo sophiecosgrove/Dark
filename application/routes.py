@@ -16,10 +16,6 @@ def characters():
     characterData = Characters.query.all()
     return render_template('characters.html', title='Character Page', characters=characterData)
 
-@app.route('/years')
-def years():
-    return render_template('years.html', title='Years Page')
-
 @app.route('/eventlog')
 def eventlog():
     eventData = Events.query.all()

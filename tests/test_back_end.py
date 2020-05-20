@@ -40,6 +40,7 @@ class TestViews(TestBase):
     def test_characters_view(self):
         response = self.client.get(url_for('characters'))
         self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Character Page', response.data)
 
     def test_home_view(self):
         response = self.client.get(url_for('home'))
@@ -74,7 +75,7 @@ class TestPosts(TestBase):
             )
         self.assertIn(b'Your character has been added!', response.data)
         with self.client:
-            response =self.client.get(url_for('character', character_id=1))
+            response = self.client.get(url_for('character', character_id=1))
             self.assertEqual(response.status_code, 200)
         with self.client:
             response = self.client.get(url_for('update_character', character_id=1))
@@ -132,36 +133,59 @@ class TestPosts(TestBase):
             response = self.client.get(url_for('delete_character', character_id=1))
             self.assertEqual(response.status_code, 405)
 
-''' class UpdatePosts(TestBase):
-    d
+class TestModels(TestBase):
+    def test_character_validation(self):
         response = self.client.post(
             '/addcharacter',
             data=dict(
                 name='testname', 
                 mother='testmother',
                 father='testfather', 
-                hair_colour='testhair',
+                hair_colour='h',
                 eye_colour='testeeye',
                 status='teststatus'
             ),
             follow_redirects=True
             )
-        self.assertIn(b'Your character has been added!', response.data)
-       
-        with self.client:
-            response = self.client.post(
+        self.assertIn(b'Field must be between 3 and 30 characters long.', response.data)
+
+    def test_repr(self):
+        character = Characters(name="test", mother="testmother", father="testfather", hair_colour='testhair', eye_colour='testeye', status='teststatus')
+        print(repr(character))
+        event = Events( season=1, episode=1, character='test', from_year=1990, to_year=2020, event='testentry')
+        print(repr(event))
+
+class TestForms(TestBase):
+    def test_repeat(self):
+        response = self.client.post(
             '/addevent',
             data=dict(
-                season=1, 
-                episode=1,
-                character='addeventpgtest', 
-                from_year=1990,
-                to_year=2020,
-                event='addeventpgtest'
+            season=1, 
+            episode=1,
+            character='test', 
+            from_year=2020,
+            to_year=2020,
+            event='testevent'
             ),
             follow_redirects=True
             )
-        self.assertIn(b'Your event has been added!', response.data) '''
+        response = self.client.post(
+            '/addevent',
+            data=dict(
+            season=1, 
+            episode=1,
+            character='test', 
+            from_year=2020,
+            to_year=2020,
+            event='testevent'
+            ),
+            follow_redirects=True
+            )
+        self.assertIn(b'Event already logged', response.data)
+
+        
+
+
         
         
     

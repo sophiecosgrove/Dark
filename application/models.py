@@ -14,12 +14,12 @@ class Events(db.Model):
     def __repr__(self):
         return ''.join([
             'EventID: ', str(self.id), '\r\n',
-            'Season/Episode: ', self.season, '/', self.episode, '\r\n',
+            'Season/Episode: ', str(self.season), '/', str(self.episode), '\r\n',
             'Character: ', self.character, '\r\n',
-            'CharacterID: ', self.character_id, '\r\n',
-            'From: ', self.from_year, '\r\n',
-            'To: ', self.to_year, '\r\n', 
-            'Event: ', self.event, '\r\n'
+            'From: ', str(self.from_year), '\r\n',
+            'To: ', str(self.to_year), '\r\n', 
+            'Event: ', self.event, '\r\n',
+            'CharacterID: ', str(self.character_id), '\r\n'
             ])
 
 class Characters(db.Model):
