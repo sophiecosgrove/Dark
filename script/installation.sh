@@ -14,4 +14,6 @@ source /var/lib/jenkins/workspace/dark_freestyle/venv/bin/activate
 
 pip3 install -r requirements.txt
 
+source ~/.bashrc
+
 python3 /var/lib/jenkins/workspace/dark_freestyle/app.py
