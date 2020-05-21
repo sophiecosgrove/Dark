@@ -22,9 +22,11 @@ Cloud server: GCP Compute Engine
 # Trello Boards
 
 # Architecture
-Initial design - erd1 
-Erd2
-final design, why, how it changed
+Initial design
+![imageoferd1](https://github.com/sophiecosgrove/Dark/blob/master/erd%201.png)
+Final design 
+![imageoferd2](https://github.com/sophiecosgrove/Dark/blob/master/erd%20after.png)
+
 
 # system level design - CI pipeline
 
@@ -37,7 +39,8 @@ The next step was to print the __repr__ functions in the models.py file, which b
 After changing the code again to get rid of an error that was happening as a result of characters being deleted when they existed in events, it meant that one of the tests failed. The test needed to be changed to account for this. After this the coverage stands at 97%. 
 
 # Risk assesment
-initial - discuss
+Initial
+![imageofinitialriskassessment](https://github.com/sophiecosgrove/Dark/blob/master/risk%20assessment%20before.png)
 final
 
 # Bugs and Fixes
