@@ -57,7 +57,7 @@ class TestViews(TestBase):
     def test_eventlog_view(self):
         response = self.client.get(url_for('eventlog'))
         self.assertEqual(response.status_code, 200)
-
+        
 class TestPosts(TestBase):
 
     def test_add_new_character(self):
