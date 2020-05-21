@@ -16,5 +16,5 @@
 			<h3>{{ event.character }}: {{ event.event }}</h3>
 		 </div>
 		</article>	
-		<img src='darkhomepic.jpg'alt='darkhomepic'/>
+		<img src={{ url_for('static', filename='darkhomepic.jpg') }} alt='darkhomepic'/>
 {% endblock %}
