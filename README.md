@@ -31,7 +31,9 @@ Initially I had planned to have three tables, one for characters, one for events
 
 
 
-# system level design - CI pipeline
+# System Level Design
+## CI pipeline
+![imageofcipipeline](https://github.com/sophiecosgrove/Dark/blob/master/CI%20pipelinepic.png)
 
 # Testing
 On my first initial implementation of pytest and with inputting a few basic get requests to display websites and one post function, the coverage was 44%, with the main problem being the routes page which was at 27%. After completing the get requests for all pages of the website and adding another post function for the characters database, the coverage went up to 67% overall and 55% for the routes.py. After sucessfully adding the update and delete functions for both the characters and events to the test code, the coverage went up to 89%. 
