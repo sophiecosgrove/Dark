@@ -16,4 +16,4 @@ pip3 install -r requirements.txt
 
 source ~/.bashrc
 
-gunicorn /var/lib/jenkins/workspace/dark_freestyle/application:app
+gunicorn --workers=4 --bind=0.0.0.0:5000 /var/lib/jenkins/workspace/dark_freestyle/application:app
