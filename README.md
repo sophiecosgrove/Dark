@@ -26,6 +26,9 @@ Cloud server: GCP Compute Engine
 ![imageoferd1](https://github.com/sophiecosgrove/Dark/blob/master/erd%201.png)
 ## Final design 
 ![imageoferd2](https://github.com/sophiecosgrove/Dark/blob/master/erd%20after.png)
+## Commentary 
+Initially I had planned to have three tables, one for characters, one for events and one for years. I thought about including more details about the family of the character, as this is quite a central concept in the show due to different family members being present in each of the time frames. However, I reconsidered this would make both the code and database quite complex, as well as possibly making the experience for the user inputting the details less enjoyable. I also planned to have more fields for the events table, detailing who the person met, what happened and what was discovered, however I thought that this text might complicate the readability of the database and the site. Therefore, I decided to keep it more streamlined, having just the central points of where the character travelled from and to and the main implications of this travel. Additionally, I had planned to have a years table detailing the years that have been travelled to in the show and the status of the nuclear power plant at this time, as this is a central part of the storyline and the explanation for the time travel being possible. However, after consideration I decided that it wasn't necessary to have this as a table, as there wouldn't need to be as many entries, so it would make more sense to have this as a page designed by the admin that could remain fairly stable over time. ~ relationship
+
 
 
 # system level design - CI pipeline
@@ -50,7 +53,7 @@ pics
 
 # Future improvements
 I could add photographs and these would help identification of the characters and also improve the experience of using the website.
-A more detailed and graphically relevant time line would show events and their implications in a more structured and meaningful way. The show follows a very complicated plot, so a page for plot theories and latest developments in the plot would be useful and it would also allow for a more enjoyable experience of the website if users could exchange and contribute their own theories. 
+A more detailed and graphically relevant time line would show events and their implications in a more structured and meaningful way. The show follows a very complicated plot, so a page for plot theories and latest developments in the plot would be useful and it would also allow for a more enjoyable experience of the website if users could exchange and contribute their own theories. As for the character fields that were omitted, in the future I could have a character profile that appears when the individual character is selected from the characters page. Here the details could be added by the admin so that it doesn't affect the users experience of the site but provides much more information.
 
 
 # Authors
