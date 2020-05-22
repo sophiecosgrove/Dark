@@ -12,7 +12,7 @@ python3 -m venv venv
 
 source /var/lib/jenkins/workspace/dark_freestyle/venv/bin/activate
 
-pip3 install -r requirements.txt
+pip3 install -r /var/lib/jenkins/workspace/dark_freestyle/requirements.txt
 
 source ~/.bashrc
 
