@@ -98,7 +98,7 @@ class TestPosts(TestBase):
             )
             self.assertIn(b'Character has been updated!', response.data)
         with self.client:
-            response = self.client.get(url_for('delete_character', character_id=2))
+            response = self.client.get(url_for('delete_character', character_id=2, method='POST'))
             self.assertEqual(response.status_code, 302)
         with self.client: 
             response = self.client.post(
@@ -134,7 +134,7 @@ class TestPosts(TestBase):
             )
             self.assertIn(b'Event has been updated!', response.data)
         with self.client:
-            response = self.client.get(url_for('delete_event', event_id=2))
+            response = self.client.get(url_for('delete_event', event_id=2, method = 'POST'))
             self.assertEqual(response.status_code, 302)
 
 class TestRoutes(TestBase):

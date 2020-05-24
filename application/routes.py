@@ -135,7 +135,6 @@ def delete_character(character_id):
     events = Events.query.filter_by(character_id=character.id).all()
     for event in events:
         db.session.delete(event)
-        db.session.commit()
 
     db.session.delete(character)
     db.session.commit()
