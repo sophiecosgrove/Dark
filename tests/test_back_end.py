@@ -37,6 +37,7 @@ class TestBase(TestCase):
         db.drop_all()
 
 class TestViews(TestBase):
+
     def test_characters_view(self):
         response = self.client.get(url_for('characters'))
         self.assertEqual(response.status_code, 200)
@@ -77,10 +78,11 @@ class TestPosts(TestBase):
             )
         self.assertIn(b'Your character has been added!', response.data)
         with self.client:
-            response = self.client.get(url_for('character', character_id=1))
+            response = self.client.get(url_for('character', character_id=2))
             self.assertEqual(response.status_code, 200)
+            self.assertIn(b'testname', response.data)
         with self.client:
-            response = self.client.get(url_for('update_character', character_id=1))
+            response = self.client.get(url_for('update_character', character_id=2))
             self.assertEqual(response.status_code, 200)
             response = self.client.post(
                 '/character/1/update',
@@ -95,6 +97,9 @@ class TestPosts(TestBase):
             follow_redirects=True
             )
             self.assertIn(b'Character has been updated!', response.data)
+        with self.client:
+            response = self.client.get(url_for('delete_character', character_id=2))
+            self.assertEqual(response.status_code, 302)
         with self.client: 
             response = self.client.post(
             '/addevent',
@@ -110,10 +115,10 @@ class TestPosts(TestBase):
             )
         self.assertIn(b'Your event has been added!', response.data)
         with self.client:
-            response =self.client.get(url_for('event', event_id=1))
+            response =self.client.get(url_for('event', event_id=2))
             self.assertEqual(response.status_code, 200)
         with self.client:
-            response = self.client.get(url_for('update_event', event_id=1))
+            response = self.client.get(url_for('update_event', event_id=2))
             self.assertEqual(response.status_code, 200)
             response = self.client.post(
                 '/event/1/update',
@@ -129,16 +134,26 @@ class TestPosts(TestBase):
             )
             self.assertIn(b'Event has been updated!', response.data)
         with self.client:
-            response = self.client.get(url_for('delete_event', event_id=1))
-            self.assertEqual(response.status_code, 405)
-        with self.client:
-            response = self.client.get(url_for('delete_character', character_id=1))
+            response = self.client.get(url_for('delete_event', event_id=2))
             self.assertEqual(response.status_code, 302)
 
 class TestRoutes(TestBase):
-    def delete_event(self):
-        response = self.client.get(url_for('delete_event', event_id=1))
-        self.assertEqual(response.status_code, 405)
+    def test_event(self):
+        response = self.client.get(url_for('event', event_id=4))
+        self.assertIn(b'404', response.data)
+    def test_populated(self):
+        response = self.client.get(url_for('update_event', event_id=1))
+        self.assertIn(b'test entry', response.data)
+    def test_character(self):
+        response = self.client.get(url_for('character', character_id=4))
+        self.assertIn(b'404', response.data)
+    def test_delete(self):
+        self.client.get(url_for('delete_character', character_id=1, method='POST'))
+        self.client.get(url_for('eventlog'))
+        response = self.client.get(url_for('event', event_id=1))
+        self.assertIn(b'404', response.data)
+        
+
 
 class TestModels(TestBase):
     def test_character_validation(self):
