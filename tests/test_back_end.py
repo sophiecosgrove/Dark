@@ -45,6 +45,7 @@ class TestViews(TestBase):
     def test_home_view(self):
         response = self.client.get(url_for('home'))
         self.assertEqual(response.status_code, 200)
+        self.assertIn(b'test entry', response.data)
 
     def test_addevent_view(self):
         response = self.client.get(url_for('addevent'))
@@ -57,6 +58,7 @@ class TestViews(TestBase):
     def test_eventlog_view(self):
         response = self.client.get(url_for('eventlog'))
         self.assertEqual(response.status_code, 200)
+        self.assertIn(b'test entry', response.data)
         
 class TestPosts(TestBase):
 
@@ -132,6 +134,11 @@ class TestPosts(TestBase):
         with self.client:
             response = self.client.get(url_for('delete_character', character_id=1))
             self.assertEqual(response.status_code, 302)
+
+class TestRoutes(TestBase):
+    def delete_event(self):
+        response = self.client.get(url_for('delete_event', event_id=1))
+        self.assertEqual(response.status_code, 405)
 
 class TestModels(TestBase):
     def test_character_validation(self):
