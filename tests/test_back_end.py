@@ -92,7 +92,7 @@ class TestPosts(TestBase):
             follow_redirects=True
             )
             self.assertIn(b'Character has been updated!', response.data)
-        with self.client: 
+        '''with self.client: 
             response = self.client.post(
             '/addevent',
             data=dict(
@@ -127,7 +127,7 @@ class TestPosts(TestBase):
             self.assertIn(b'Event has been updated!', response.data)
         with self.client:
             response = self.client.get(url_for('delete_event', event_id=1))
-            self.assertEqual(response.status_code, 405)
+            self.assertEqual(response.status_code, 405)'''
         with self.client:
             response = self.client.get(url_for('delete_character', character_id=1))
             self.assertEqual(response.status_code, 405)
