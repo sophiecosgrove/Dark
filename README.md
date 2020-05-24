@@ -36,12 +36,24 @@ Initially I had planned to have three tables, one for characters, one for events
 ![imageofcipipeline](https://github.com/sophiecosgrove/Dark/blob/master/CI%20pipelinepic.png)
 
 # Testing
-On my first initial implementation of pytest and with inputting a few basic get requests to display websites and one post function, the coverage was 53%, with the main problem being the routes page which was at 27%. After completing the get requests for all pages of the website and adding another post function for the characters database, the coverage went up to 67% overall and 55% for the routes.py. After sucessfully adding the update and delete functions for both the characters and events to the test code, the coverage went up to 89%. 
-After updating the foreign key, the tests failed as it was necessary for there to be a character existing in the database before an event was added so that the event could have the character_id. I re-wrote the tests so that within each test session, if an event was being added/updated or deleted, there would always be a character for it to be able to link to.
+## Unit Testing 
+* On my first initial implementation of pytest and with inputting a few basic get requests to display websites and one post function, the coverage was 53%, with the main problem being the routes page which was at 27%. 
+* ![imageofcov53](https://github.com/sophiecosgrove/Dark/blob/master/images/cov53.png)
+* After completing the get requests for all pages of the website, the overall percentage was 59% with the routes page being at 37%.
+* ![imageofcov59](https://github.com/sophiecosgrove/Dark/blob/master/images/cov59.png)
+* Through adding another post function for the add characters page, the coverage went up to 71% overall and 60% for the routes.py.
+* ![imageofcov71](https://github.com/sophiecosgrove/Dark/blob/master/images/cov71.png)
+* After adding the update and delete functions for both the characters and events to the test code, the coverage went up to 89%.
+* ![imageofcov89](https://github.com/sophiecosgrove/Dark/blob/master/images/covreport89.png)
+* After updating the foreign key in models.py, the tests failed as it was necessary for there to be a character existing in the database before an event was added so that the event could have the character_id. I re-wrote the tests and entered a character in before an event with the corresponding character id.
+* The next step was to print the __repr__ functions in the models.py file, which brought the models.py coverage from 91% to 100%. After deleting a custom validator from the events form, which wasn't working due to there already being a working one above which was causing the code to skip over this function, the forms.py coverage went up from 91% to 100%. This meant the overall coverage was 96%, with the routes being 93%.
+* [!imageofcov96](https://github.com/sophiecosgrove/Dark/blob/master/images/cov96.png)
+* After changing the code again to ensure that if a character is deleted, all corresponding events are also deleted. The coverage went up to 97%.
+* [!imageofcov97](https://github.com/sophiecosgrove/Dark/blob/master/images/cov97.png)
+* Finally, after rewriting the delete function for the events, the coverage went up to 99% with one line missing from routes. 
+* [!imageofcov99](https://github.com/sophiecosgrove/Dark/blob/master/images/cov99.png)
+* The missing line of code is triggered when a character is deleted and all corresponding events must be deleted, however when ran through the tests, it appears that the page for the event that should have been deleted with the character is still accessible. When trying this through the website it is not, however the webpage does sometimes need to be refreshed after the character has been deleted, therefore this might be causing a slight issue with the test. I also added an action = 'POST' to the get request as I was aware that perhaps the page was being accessed but the deletion was not being submitted, however this did not appear to change anything.
 
-The next step was to print the __repr__ functions in the models.py file, which brought the models.py coverage from 91% to 100%. After deleting a custom validator from the events form, which wasn't working due to their already being a working one above which was causing the code to skip over this function, the forms.py coverage went up from 91% to 100%. I also had an app.py file which was falsely repeated in the applications folder as well as being in the root of the project, so I removed this which improved the overall score to 94%.
-
-After changing the code again to get rid of an error that was happening as a result of characters being deleted when they existed in events, it meant that one of the tests failed. The test needed to be changed to account for this. After this the coverage stands at 97%. 
 
 # Risk assesment
 ## Initial
