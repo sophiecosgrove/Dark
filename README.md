@@ -22,14 +22,19 @@ Users are able to create, retrieve, update and delete both characters and events
 * Programming language: Python
 * Unit Testing with Python (Pytest)
 * Integration Testing with Python (Selenium)
-* Front-end: Flask (HTML), CSS, JavaScript
+* Front-end: HTML, Bootstrap CSS.
 * Version Control: Git
 * CI Server: Jenkins
 * Cloud server: GCP Compute Engine
 
 # Trello Boards
 * I planned my Trello boards and tasks around the technology and activities that were taking place throughout the week. My first trello board was very conceptual, consisting of user stories, MoSCoW and tasks to complete. Over the course of my Kanban plotting, I found it helpful to add class tasks onto the board as we completed them if I knew that they were relevant to my project.
-* Once we started to learn flask, I was able to keep up with learning through practicing on our class blog and then also applying it to my project throughout the day, however I would often leave completing the exercises that came after the tutorials in order to concentrate on our class work. I found it helpful to add reminders onto my Trello board to do these exercises.
+![imageoftrello1](https://github.com/sophiecosgrove/Dark/blob/master/images/Trello1.png)
+![imageoftrello1.5](https://github.com/sophiecosgrove/Dark/blob/master/images/Trello1.5.png)
+* Once we started to learn flask, I was able to keep up with learning through practicing on our class blog and then also applying it to my project throughout the day. I found it helpful to add reminders onto my Trello board to do these exercises.I also began to add in issues I was facing or concerns I encountered which I then went back to and appended the solution I adopted to address them. 
+![imageoftrello2](https://github.com/sophiecosgrove/Dark/blob/master/images/Trello2.png)
+![imageoftrello2.5](https://github.com/sophiecosgrove/Dark/blob/master/images/Trello2.5.png)
+
 # Architecture
 ## Initial design
 ![imageoferd1](https://github.com/sophiecosgrove/Dark/blob/master/erd%201.png)
@@ -47,20 +52,20 @@ Initially I had planned to have three tables, one for characters, one for events
 # Testing
 ## Unit Testing 
 * On my first initial implementation of pytest and with inputting a few basic get requests to display websites and one post function, the coverage was 53%, with the main problem being the routes page which was at 27%. 
-* ![imageofcov53](https://github.com/sophiecosgrove/Dark/blob/master/images/cov53.png)
+![imageofcov53](https://github.com/sophiecosgrove/Dark/blob/master/images/cov53.png)
 * After completing the get requests for all pages of the website, the overall percentage was 59% with the routes page being at 37%.
-* ![imageofcov59](https://github.com/sophiecosgrove/Dark/blob/master/images/cov59.png)
+![imageofcov59](https://github.com/sophiecosgrove/Dark/blob/master/images/cov59.png)
 * Through adding another post function for the add characters page, the coverage went up to 71% overall and 60% for the routes.py.
-* ![imageofcov71](https://github.com/sophiecosgrove/Dark/blob/master/images/cov71.png)
+![imageofcov71](https://github.com/sophiecosgrove/Dark/blob/master/images/cov71.png)
 * After adding the update and delete functions for both the characters and events to the test code, the coverage went up to 89%.
-* ![imageofcov89](https://github.com/sophiecosgrove/Dark/blob/master/images/covreport89.png)
+![imageofcov89](https://github.com/sophiecosgrove/Dark/blob/master/images/covreport89.png)
 * After updating the foreign key in models.py, the tests failed as it was necessary for there to be a character existing in the database before an event was added so that the event could have the character_id. I re-wrote the tests and entered a character in before an event with the corresponding character id.
 * The next step was to print the __repr__ functions in the models.py file, which brought the models.py coverage from 91% to 100%. After deleting a custom validator from the events form, which wasn't working due to there already being a working one above which was causing the code to skip over this function, the forms.py coverage went up from 91% to 100%. This meant the overall coverage was 96%, with the routes being 93%.
-* [!imageofcov96](https://github.com/sophiecosgrove/Dark/blob/master/images/cov96.png)
+[!imageofcov96](https://github.com/sophiecosgrove/Dark/blob/master/images/cov96.png)
 * After changing the code again to ensure that if a character is deleted, all corresponding events are also deleted. The coverage went up to 97%.
-* [!imageofcov97](https://github.com/sophiecosgrove/Dark/blob/master/images/cov97.png)
+[!imageofcov97](https://github.com/sophiecosgrove/Dark/blob/master/images/cov97.png)
 * Finally, after rewriting the delete function for the events, the coverage went up to 99% with one line missing from routes. 
-* [!imageofcov99](https://github.com/sophiecosgrove/Dark/blob/master/images/cov99.png)
+[!imageofcov99](https://github.com/sophiecosgrove/Dark/blob/master/images/cov99.png)
 * The missing line of code is triggered when a character is deleted and all corresponding events must be deleted, however when ran through the tests, it appears that the page for the event that should have been deleted with the character is still accessible. When trying this through the website it is not, however the webpage does sometimes need to be refreshed after the character has been deleted, therefore this might be causing a slight issue with the test. I also added an action = 'POST' to the get request as I was aware that perhaps the page was being accessed but the deletion was not being submitted, however this did not appear to change anything.
 
 
@@ -73,7 +78,13 @@ final
 # Bugs and Fixes
 
 # Front end design
-pics
+We created a layout.html which contained - Jinja2 extends, render_template passed through function, bootstrap css, alerts, text colours, buttons, containers, image. 
+![imageofhomepage](https://github.com/sophiecosgrove/Dark/blob/master/images/Homepage.png)
+![imageofcharacterpage](https://github.com/sophiecosgrove/Dark/blob/master/images/CharacterPage.png)
+![imageofeventpage](https://github.com/sophiecosgrove/Dark/blob/master/images/EventLog.png)
+![imageofcharacteradded](https://github.com/sophiecosgrove/Dark/blob/master/images/addcharacter.png)
+![imageofeventadded](https://github.com/sophiecosgrove/Dark/blob/master/images/addevent.png)
+
 
 # Future improvements
 I could add photographs and these would help identification of the characters and also improve the experience of using the website.
