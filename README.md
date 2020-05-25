@@ -80,7 +80,7 @@ Initially I had planned to have three tables, one for characters, events and yea
 
 # Risk assesment
 ## Initial
-![imageofinitialriskassessment](https://github.com/sophiecosgrove/Dark/blob/master/risk%20assessment%20before.png)
+![imageofinitialriskassessment](https://github.com/sophiecosgrove/Dark/blob/master/images/risk%20assessment%20before.png)
 * Initial risks consisted of mainly theoretical considerations as I was approaching the project from a planning and conceptual perspective rather than technical. I was mainly concerned with the project not being completed as I was not experienced in the tools and methods we would be using. However I have completed the project and gained confidence in the skills that we have learnt and I feel that I have successfully applied them. The other risks detailed in the register were based on theoretical use of the website, and what I presumed would affect the usability. These risks are still therefore applicable and thus appear in my future considerations.
 ## Future Risk Considerations
 ![finalriskassessment](https://github.com/sophiecosgrove/Dark/blob/master/images/futurerisks.png)
