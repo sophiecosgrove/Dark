@@ -8,7 +8,7 @@ from application.forms import EventForm, CharacterForm, UpdateEventForm, UpdateC
 @app.route('/')
 @app.route('/home')
 def home():
-    eventData = Events.query.last()
+    eventData = Events.query.first()
     return render_template('home.html', title='Home Page', event=eventData)
 
 @app.route('/characters')
