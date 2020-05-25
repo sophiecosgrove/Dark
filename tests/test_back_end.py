@@ -37,13 +37,16 @@ class TestBase(TestCase):
         db.drop_all()
 
 class TestViews(TestBase):
+
     def test_characters_view(self):
         response = self.client.get(url_for('characters'))
         self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Character Page', response.data)
 
     def test_home_view(self):
         response = self.client.get(url_for('home'))
         self.assertEqual(response.status_code, 200)
+        self.assertIn(b'test entry', response.data)
 
     def test_addevent_view(self):
         response = self.client.get(url_for('addevent'))
@@ -56,7 +59,8 @@ class TestViews(TestBase):
     def test_eventlog_view(self):
         response = self.client.get(url_for('eventlog'))
         self.assertEqual(response.status_code, 200)
-
+        self.assertIn(b'test entry', response.data)
+        
 class TestPosts(TestBase):
 
     def test_add_new_character(self):
@@ -74,10 +78,11 @@ class TestPosts(TestBase):
             )
         self.assertIn(b'Your character has been added!', response.data)
         with self.client:
-            response =self.client.get(url_for('character', character_id=1))
+            response = self.client.get(url_for('character', character_id=2))
             self.assertEqual(response.status_code, 200)
+            self.assertIn(b'testname', response.data)
         with self.client:
-            response = self.client.get(url_for('update_character', character_id=1))
+            response = self.client.get(url_for('update_character', character_id=2))
             self.assertEqual(response.status_code, 200)
             response = self.client.post(
                 '/character/1/update',
@@ -92,7 +97,10 @@ class TestPosts(TestBase):
             follow_redirects=True
             )
             self.assertIn(b'Character has been updated!', response.data)
-        '''with self.client: 
+        with self.client:
+            response = self.client.get(url_for('delete_character', character_id=2, method='POST'))
+            self.assertEqual(response.status_code, 302)
+        with self.client: 
             response = self.client.post(
             '/addevent',
             data=dict(
@@ -107,17 +115,17 @@ class TestPosts(TestBase):
             )
         self.assertIn(b'Your event has been added!', response.data)
         with self.client:
-            response =self.client.get(url_for('event', event_id=1))
+            response =self.client.get(url_for('event', event_id=2))
             self.assertEqual(response.status_code, 200)
         with self.client:
-            response = self.client.get(url_for('update_event', event_id=1))
+            response = self.client.get(url_for('update_event', event_id=2))
             self.assertEqual(response.status_code, 200)
             response = self.client.post(
                 '/event/1/update',
                 data=dict(
                 season=1, 
                 episode=1,
-                character='testcharacter', 
+                character='testname', 
                 from_year=2020,
                 to_year=2000,
                 event='testevent'
@@ -126,42 +134,80 @@ class TestPosts(TestBase):
             )
             self.assertIn(b'Event has been updated!', response.data)
         with self.client:
-            response = self.client.get(url_for('delete_event', event_id=1))
-            self.assertEqual(response.status_code, 405)'''
-        with self.client:
-            response = self.client.get(url_for('delete_character', character_id=1))
-            self.assertEqual(response.status_code, 405)
+            response = self.client.get(url_for('delete_event', event_id=2, method = 'POST'))
+            self.assertEqual(response.status_code, 302)
 
-''' class UpdatePosts(TestBase):
-    d
+class TestRoutes(TestBase):
+    def test_event(self):
+        response = self.client.get(url_for('event', event_id=4))
+        self.assertIn(b'404', response.data)
+    def test_populated(self):
+        response = self.client.get(url_for('update_event', event_id=1))
+        self.assertIn(b'test entry', response.data)
+    def test_character(self):
+        response = self.client.get(url_for('character', character_id=4))
+        self.assertIn(b'404', response.data)
+    def test_delete(self):
+        self.client.get(url_for('delete_character', character_id=1, method='POST'))
+        self.client.get(url_for('eventlog'))
+        response = self.client.get(url_for('event', event_id=1))
+        self.assertIn(b'404', response.data)
+        
+
+
+class TestModels(TestBase):
+    def test_character_validation(self):
         response = self.client.post(
             '/addcharacter',
             data=dict(
                 name='testname', 
                 mother='testmother',
                 father='testfather', 
-                hair_colour='testhair',
+                hair_colour='h',
                 eye_colour='testeeye',
                 status='teststatus'
             ),
             follow_redirects=True
             )
-        self.assertIn(b'Your character has been added!', response.data)
-       
-        with self.client:
-            response = self.client.post(
-            '/addevent',
+        self.assertIn(b'Field must be between 3 and 30 characters long.', response.data)
+
+    def test_repr(self):
+        character = Characters(name="test", mother="testmother", father="testfather", hair_colour='testhair', eye_colour='testeye', status='teststatus')
+        print(repr(character))
+        event = Events( season=1, episode=1, character='test', from_year=1990, to_year=2020, event='testentry')
+        print(repr(event))
+
+class TestForms(TestBase):
+    def test_repeat(self):
+        response = self.client.post(
+            '/addcharacter',
             data=dict(
-                season=1, 
-                episode=1,
-                character='addeventpgtest', 
-                from_year=1990,
-                to_year=2020,
-                event='addeventpgtest'
+            name='testuser', 
+            mother='testmother',
+            father='testfather', 
+            hair_colour='testhair',
+            eye_colour='testeye',
+            status='teststatus'
             ),
             follow_redirects=True
             )
-        self.assertIn(b'Your event has been added!', response.data) '''
+        response = self.client.post(
+            '/addcharacter',
+            data=dict(
+            name='testuser', 
+            mother='testmother',
+            father='testfather', 
+            hair_colour='testhair',
+            eye_colour='testeye',
+            status='teststatus'
+            ),
+            follow_redirects=True
+            )
+        self.assertIn(b'Character already logged', response.data)
+
+        
+
+
         
         
     

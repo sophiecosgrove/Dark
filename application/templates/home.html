@@ -3,7 +3,11 @@
 {% block body_content %}
                 <h1>{{ title }}</h1>
 
-		<p>Welcome to my blog on the Netflix series 'Dark'</p>
+		<p>Welcome to my blog on the Netflix series 'Dark'. Dark is set in a german town called Winden and follows a series of
+			characters and their families throughout time, with some discovering the secrets of the town and why circumstances seem
+			to repeat every 33 years. On this website you will find a helpful time log of events and details of each character to help 
+			you understand the show. You can also add, update and delete from these pages. Enjoy!
+		</p>
 		<p>Latest events:</p>
 		<article class="media content-section">
 		 <div>
@@ -11,5 +15,7 @@
 
 			<h3>{{ event.character }}: {{ event.event }}</h3>
 		 </div>
-		</article>	
+		</article>
+		<img src={{ url_for('static', filename='darkhomepic.jpg') }} alt='darkhomepic'/>
+	    
 {% endblock %}

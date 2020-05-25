@@ -8,17 +8,13 @@ from application.forms import EventForm, CharacterForm, UpdateEventForm, UpdateC
 @app.route('/')
 @app.route('/home')
 def home():
-    eventData = Events.query.first()
+    eventData = Events.query.last()
     return render_template('home.html', title='Home Page', event=eventData)
 
 @app.route('/characters')
 def characters():
     characterData = Characters.query.all()
     return render_template('characters.html', title='Character Page', characters=characterData)
-
-@app.route('/years')
-def years():
-    return render_template('years.html', title='Years Page')
 
 @app.route('/eventlog')
 def eventlog():
@@ -97,7 +93,7 @@ def update_event(event_id):
         form.event.data = event.event
     return render_template('addevent.html', title = 'Update Event', form = form)
 
-@app.route("/event/<int:event_id>/delete", methods=['POST'])
+@app.route("/event/<int:event_id>/delete", methods=['GET', 'POST'])
 def delete_event(event_id):
     event = Events.query.get_or_404(event_id)
     db.session.delete(event)
@@ -133,9 +129,13 @@ def update_character(character_id):
         form.status.data = character.status
     return render_template('addcharacter.html', title = 'Update Character', form = form)
 
-@app.route("/character/<int:character_id>/delete", methods=['POST'])
+@app.route("/character/<int:character_id>/delete", methods=['GET','POST'])
 def delete_character(character_id):
     character = Characters.query.get_or_404(character_id)
+    events = Events.query.filter_by(character_id=character.id).all()
+    for event in events:
+        db.session.delete(event)
+
     db.session.delete(character)
     db.session.commit()
     flash('Character  has been deleted!', 'success')

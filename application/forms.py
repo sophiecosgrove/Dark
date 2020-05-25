@@ -3,6 +3,41 @@ from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired, Length, ValidationError
 from application.models import Events, Characters
 
+class CharacterForm(FlaskForm):
+    name = StringField('Name',
+            validators = [
+                DataRequired(),
+                ]
+            )
+    mother = StringField('Mother')
+    father = StringField('Father')
+    hair_colour = StringField('Hair Colour',
+            validators = [
+                DataRequired(),
+                Length(min=3, max=30)
+                ]
+            )
+    eye_colour = StringField('Eye Colour',
+            validators = [
+                DataRequired(),
+                Length(min=3, max=30)
+                ]
+            )
+    status = StringField('Alive or Deceased',
+            validators = [
+                DataRequired(),
+                Length(min=3, max=30)
+                ]
+            )
+    submit = SubmitField('Add Character')
+
+    def validate_name(self, name):
+        character = Characters.query.filter_by(name=name.data).first()
+
+        if character:
+            raise ValidationError('Character already logged')
+
+
 class EventForm(FlaskForm):
     season = IntegerField('Season',
             validators = [
@@ -38,45 +73,6 @@ class EventForm(FlaskForm):
         )
     submit = SubmitField('Add Event')
 
-    def validate_event(self, event):
-        event = Events.query.filter_by(event=event.data).first()
-
-        if event:
-            raise ValidationError('Event already logged')
-
-class CharacterForm(FlaskForm):
-    name = StringField('Name',
-            validators = [
-                DataRequired(),
-                ]
-            )
-    mother = StringField('Mother')
-    father = StringField('Father')
-    hair_colour = StringField('Hair Colour',
-            validators = [
-                DataRequired(),
-                Length(min=3, max=30)
-                ]
-            )
-    eye_colour = StringField('Eye Colour',
-            validators = [
-                DataRequired(),
-                Length(min=3, max=30)
-                ]
-            )
-    status = StringField('Alive or Deceased',
-            validators = [
-                DataRequired(),
-                Length(min=3, max=30)
-                ]
-            )
-    submit = SubmitField('Add Character')
-
-    def validate_character(self, name):
-        character = Characters.query.filter_by(name=name.data).first()
-
-        if character:
-            raise ValidationError('Character already logged')
 
 class UpdateEventForm(FlaskForm):
     season = IntegerField('Season',
