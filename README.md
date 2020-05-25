@@ -56,7 +56,7 @@ Initially I had planned to have three tables, one for characters, events and yea
 # System Level Design
 ## CI pipeline
 ![imageofcipipeline](https://github.com/sophiecosgrove/Dark/blob/master/images/CI%20pipelinepic.png)
-* Code was developed, tested and pushed to github. The code is then pulled by Jenkins and a build is created, deploying the website into the live environment. - Webhook. Gunicorn SystemDservice is used to establish the persistence of the website being hosted, it is successfully set up to manage the background processes to automate the delivery of the website as much as possible.
+* Code was developed, tested and pushed to github. Through the use of a webhook, Jenkins is triggered to pull the code and a build is created, deploying the website into the live environment. Gunicorn SystemDservice is used to establish the persistence of the website being hosted, it is successfully set up to manage the background processes to automate the delivery of the website as much as possible.
 
 # Testing
 ## Unit Testing 
