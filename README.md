@@ -20,7 +20,8 @@ CI Server: Jenkins
 Cloud server: GCP Compute Engine
 
 # Trello Boards
-
+* I planned my Trello boards and tasks around the technology and activities that were taking place throughout the week. My first trello board was very conceptual, consisting of user stories, MoSCoW and tasks to complete. Over the course of my Kanban plotting, I found it helpful to add class tasks onto the board as we completed them if I knew that they were relevant to my project.
+* Once we started to learn flask, I was able to keep up with learning through practicing on our class blog and then also applying it to my project throughout the day, however I would often leave completing the exercises that came after the tutorials in order to concentrate on our class work. I found it helpful to add reminders onto my Trello board to do these exercises.
 # Architecture
 ## Initial design
 ![imageoferd1](https://github.com/sophiecosgrove/Dark/blob/master/erd%201.png)
@@ -58,6 +59,7 @@ Initially I had planned to have three tables, one for characters, one for events
 # Risk assesment
 ## Initial
 ![imageofinitialriskassessment](https://github.com/sophiecosgrove/Dark/blob/master/risk%20assessment%20before.png)
+* Initial risks consisted of mainly theoretical considerations as I was approaching the project from a planning and conceptual perspective rather than technical.
 final
 
 # Bugs and Fixes
