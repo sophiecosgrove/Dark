@@ -1,23 +1,31 @@
 # Dark
-In fulfillment of the week 5 CRUD application project
+In fulfillment of the week 6 project.
 
 # Requirements
-To create a CRUD application of our choice that uses the technologies and methods we have learned up to this point namely: *A Kanban     board *A relational database to store at least two tables persistently and a model of their relationship *Clear documentation and a     risk assesment *A python based CRUD application made using best practices such as TDD *Test suites and automated tests for the           application. Must have a high coverage with consistent reports and evidence *A functioning front end *A version control system using     the Feature-Branch model *Code built through a CI server and deployed to a cloud based VM
+* To create a CRUD application which utilises the technologies and methods we have learned up to this point, such as; 
+* A Kanban style board, with full expansion on user stories, use cases and tasks needed to complete the project. It can also contain a record of any risks or issues faced,
+* A relational database with at least two tables which share a relationship,
+* Clear documentation from a design phase describing the architecture used for the project as well as a detailed Risk Assessment,
+* A functional CRUD application created in Python, following best practices and design principles,
+* Test suites and automated tests for the application. Must have a high coverage with consistent reports and evidence,
+* A functioning front end and integrated APIs, using flask,
+* A version control system using the Feature-Branch model, 
+* Code built through a CI server and deployed to a cloud based VM.
 
 # Solution 
 I have designed a blog based on the Netflix show 'Dark'. The program is about timetravel, with the plot of the show becoming complicated. Therefore, I decided to make a website displaying the events in the show so that viewers can keep on track with the plot.
 Users are able to create, retrieve, update and delete both characters and events using the website interface, which is then connected to an sql database where the information is stored. 
 
 # Technologies Used
-Kanban Board: Trello
-Database: GCP SQL Server
-Programming language: Python
-Unit Testing with Python (Pytest)
-Integration Testing with Python (Selenium)
-Front-end: Flask (HTML), CSS, JavaScript
-Version Control: Git
-CI Server: Jenkins
-Cloud server: GCP Compute Engine
+* Kanban Board: Trello
+* Database: GCP SQL Server
+* Programming language: Python
+* Unit Testing with Python (Pytest)
+* Integration Testing with Python (Selenium)
+* Front-end: Flask (HTML), CSS, JavaScript
+* Version Control: Git
+* CI Server: Jenkins
+* Cloud server: GCP Compute Engine
 
 # Trello Boards
 * I planned my Trello boards and tasks around the technology and activities that were taking place throughout the week. My first trello board was very conceptual, consisting of user stories, MoSCoW and tasks to complete. Over the course of my Kanban plotting, I found it helpful to add class tasks onto the board as we completed them if I knew that they were relevant to my project.
