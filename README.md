@@ -95,9 +95,9 @@ The use of a layout.html was used to provide a base template for all pages of th
 ![imageofeventadded](https://github.com/sophiecosgrove/Dark/blob/master/images/addevent.png)
 
 # Acceptance Criteria
-* I am satisfied that the MVP for this project was met.
+I am satisfied that the MVP for this project was met.
 ## User Stories
-* A user can successfully create, review, update and delete events and characters on the website. If there is a problem with their entry such that the data entered is not valid, they will be notified. In addition, if they attempt to enter a character which is already in the database, they will get a message. This means that the user can fulfill the user stories.
+A user can successfully create, review, update and delete events and characters on the website. If there is a problem with their entry such that the data entered is not valid, they will be notified. In addition, if they attempt to enter a character which is already in the database, they will get a message. This means that the user can fulfill the user stories.
 ## MoSCow
 The must have criteria for this project was met - A database with two tables: Events and Characters with essential columns for each so that the user can understand the show. Full CRUD functionality. 
 The should have criteria was also met - Relations between family members, what years they existed in, characteristics, alive yes or no. This means that the information on the website is meaningful and will aid the user in understanding the plot of the show.
