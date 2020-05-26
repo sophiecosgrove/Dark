@@ -110,6 +110,14 @@ The wont have criteria was also not met as it was beyond the criteria for the pr
 I could add photographs and these would help identification of the characters and also improve the experience of using the website.
 A more detailed and graphically relevant time line would show events and their implications in a more structured and meaningful way. The show follows a very complicated plot, so a page for plot theories and latest developments in the plot would be useful and it would also allow for a more enjoyable experience of the website if users could exchange and contribute their own theories. As for the character fields that were omitted, in the future I could have a character profile that appears when the individual character is selected from the characters page. Here the details could be added by the admin so that it doesn't affect the users experience of the site but provides much more information.
 
+# Acknowledgements
+Thanks to the QA training team and my group for their support. 
 
 # Authors
 Sophie Cosgrove
+
+# Version
+1
+
+# Licensing
+Copyright 2020 QA Academy, All Rights Reserved.
