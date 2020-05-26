@@ -58,7 +58,7 @@ Upon my first design of the ERD, I had planned the primary keys to be the event 
 # System Level Design
 ## CI pipeline
 ![imageofcipipeline](https://github.com/sophiecosgrove/Dark/blob/master/images/CI%20pipelinepic.png)
-* Code was developed, tested and pushed to github. Through the use of a webhook, Jenkins is triggered to pull the code and a build is created, deploying the website into the live environment. SystemDservice is used to establish the persistence of the website being hosted, it is successfully set up to manage the background processes to automate the delivery of the website as much as possible.
+* Code was developed, connected to an SQL database, hosted on a development server, tested and pushed to github. Through the use of a webhook, Jenkins is triggered to pull the code and a build is created, deploying the website into the live environment hosted on Gunicorn, a WSGI production server. SystemDservice is used to establish the persistence of the website being hosted, it is successfully set up to manage the background processes to automate the delivery of the website as much as possible.
 
 # Testing
 ## Unit Testing 
