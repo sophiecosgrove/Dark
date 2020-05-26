@@ -78,6 +78,8 @@ Upon my first design of the ERD, I had planned the primary keys to be the event 
 * Finally, after rewriting the delete function for the events, the coverage went up to 99% with one line missing from routes. 
 * ![imageofcov99](https://github.com/sophiecosgrove/Dark/blob/master/images/cov99.png)
 * The missing line of code is triggered when a character is deleted and all corresponding events must be deleted, however when ran through the tests, it appears that the page for the event that should have been deleted with the character is still accessible. When trying this through the website it is not, however the webpage does sometimes need to be refreshed after the character has been deleted, therefore this might be causing a slight issue with the test. I also added an action = 'POST' to the get request as I was aware that perhaps the page was being accessed but the deletion was not being submitted, however this did not appear to change anything.
+## Integration Testing
+* I wrote two tests using Selenium to test the features of the website using chromedriver. I faced numerous problems with these tests, with the first variables not being recognised by the code. I tried to change the full XPath to XPath however this didn't seem to help. Therefore, I did not manage to continue with Selenium and automate the testing with Jenkins.
 
 
 # Risk assesment
@@ -105,10 +107,14 @@ The must have criteria for this project was met - A database with two tables: Ev
 The should have criteria was also met - Relations between family members, what years they existed in, characteristics, alive yes or no. This means that the information on the website is meaningful and will aid the user in understanding the plot of the show.
 The could have criteria was not met as it was beyond the criteria for the project. - A years table. 
 The wont have criteria was also not met as it was beyond the criteria for the project - images of the characters at different stages of their lives. 
+## Feature Branching
+I used a development branch to create changes to the code, and a master branch to create the root of the project with the relevant documentation, images and readme. At the end of the project I merged the development branch into the master branch.
 
 # Future improvements
-I could add photographs and these would help identification of the characters and also improve the experience of using the website.
+* I could add photographs and these would help identification of the characters and also improve the experience of using the website.
 A more detailed and graphically relevant time line would show events and their implications in a more structured and meaningful way. The show follows a very complicated plot, so a page for plot theories and latest developments in the plot would be useful and it would also allow for a more enjoyable experience of the website if users could exchange and contribute their own theories. As for the character fields that were omitted, in the future I could have a character profile that appears when the individual character is selected from the characters page. Here the details could be added by the admin so that it doesn't affect the users experience of the site but provides much more information.
+* It is also important to have more integration testing and automate this through Jenkins. If it was not for time constraints I would have implemented Selenium properly for effective automated testing. 
+* In addition, although my test coverage is high, at 99%, it would be better to have it complete at 100%. 
 
 # Acknowledgements
 Thanks to the QA training team and my group for their support. 
