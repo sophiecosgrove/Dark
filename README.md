@@ -117,7 +117,7 @@ Thanks to the QA training team and my group for their support.
 Sophie Cosgrove
 
 # Version
-1
+V.1
 
 # Licensing
 Copyright 2020 QA Academy, All Rights Reserved.
