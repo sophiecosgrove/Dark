@@ -1,7 +1,7 @@
 # Dark
-In fulfillment of the week 6 project.
-
-# Requirements
+In fulfillment of the week 6 DevOps Core Fundamental Project Specification.
+*
+* Requirements
 * To create a CRUD application which utilises the technologies and methods we have learned up to this point, such as; 
 * A Kanban style board, with full expansion on user stories, use cases and tasks needed to complete the project. It can also contain a record of any risks or issues faced,
 * A relational database with at least two tables which share a relationship,
