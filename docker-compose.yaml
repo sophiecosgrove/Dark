@@ -10,9 +10,9 @@ services:
     - type: bind
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
-  flask-app:
-    image: flask-app 
-    build: ./
+  sfia1:
+    image: sfia1 
+    build: .
     ports:
       - target: 5000
         published: 5000
